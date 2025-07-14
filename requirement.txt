@@ -1,1 +1,7 @@
-Build an micro emotion detection interface
+streamlit
+opencv-python
+mediapipe
+numpy
+openai
+joblib
+pandas

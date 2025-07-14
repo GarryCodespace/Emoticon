@@ -10,8 +10,8 @@ face_mesh = mp_face_mesh.FaceMesh(static_image_mode=False, max_num_faces=1, refi
 
 # Define 100+ gestures (some with reduced sensitivity thresholds)
 GESTURES = [
-    ("raised left eyebrow", lambda lm: (lm[159].y - lm[65].y) > 0.05),
-    ("raised right eyebrow", lambda lm: (lm[386].y - lm[295].y) > 0.05),
+    ("raised left eyebrow", lambda lm: (lm[159].y - lm[65].y) > 0.06),
+    ("raised right eyebrow", lambda lm: (lm[386].y - lm[295].y) > 0.06),
     ("mouth open", lambda lm: abs(lm[13].y - lm[14].y) > 0.05),
     ("frown", lambda lm: abs(lm[61].x - lm[291].x) < 0.035),
     ("pursed lips", lambda lm: abs(lm[61].x - lm[291].x) < 0.025),
@@ -40,10 +40,8 @@ GESTURES = [
     ("jaw drop", lambda lm: abs(lm[152].y - lm[13].y) > 0.15),
     ("head tilt left", lambda lm: lm[234].y - lm[454].y > 0.03),
     ("head tilt right", lambda lm: lm[454].y - lm[234].y > 0.03),
-    ("head turn left", lambda lm: lm[234].x < lm[454].x - 0.05),
     ("head turn right", lambda lm: lm[454].x < lm[234].x - 0.05),
-    ("head turn up", lambda lm: lm[10].y < lm[152].y - 0.04),
-    ("head turn down", lambda lm: lm[10].y > lm[152].y + 0.04), 
+    ("head turn down", lambda lm: lm[10].y > lm[152].y + 0.08), 
     ("nose wrinkle", lambda lm: abs(lm[6].y - lm[168].y) < 0.02),
     ("brow raise + smile", lambda lm: (lm[159].y - lm[65].y) > 0.1 and abs(lm[61].x - lm[291].x) > 0.08),
     ("brow furrow + frown", lambda lm: abs(lm[65].x - lm[295].x) < 0.03 and abs(lm[61].x - lm[291].x) < 0.035),
@@ -71,6 +69,7 @@ if run or refresh:
         ret, frame = cap.read()
         if not ret:
             break
+
 
         frame = cv2.flip(frame, 1)
         rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)

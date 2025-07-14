@@ -15,14 +15,12 @@ last_detect_time = {}
 cooldown_seconds = 5
 
 GESTURE_DEFINITIONS = [
-    ("raised left eyebrow", lambda lm: (lm[159].y - lm[65].y) > 0.03),
+    ("raised left eyebrow", lambda lm: (lm[159].y - lm[65].y) > 0.05),
     ("pressed lips", lambda lm: abs(lm[13].y - lm[14].y) < 0.01),
     ("squinting eyes", lambda lm: abs(lm[159].y - lm[145].y) < 0.01),
-    ("raised right eyebrow", lambda lm: (lm[386].y - lm[295].y) > 0.03),
+    ("raised right eyebrow", lambda lm: (lm[386].y - lm[295].y) > 0.05),
     ("mouth open", lambda lm: abs(lm[13].y - lm[14].y) > 0.04),
     ("eyes wide open", lambda lm: abs(lm[159].y - lm[145].y) > 0.035),
-    ("head tilt left", lambda lm: lm[234].y - lm[454].y > 0.03),
-    ("head tilt right", lambda lm: lm[454].y - lm[234].y > 0.03),
     ("cheek puff", lambda lm: abs(lm[50].x - lm[280].x) > 0.25),
     ("nostril flare", lambda lm: abs(lm[94].x - lm[331].x) > 0.05),
     ("smile", lambda lm: abs(lm[61].x - lm[291].x) > 0.045),
